@@ -154,15 +154,9 @@ int main(int argc, char* argv[])
 	customHash* hash_data = new customHash;
 	hash_data->initialize(hash_data, nx);
 
-	#ifdef _DEBUG
-	cout << "データ要素数：" << nx << endl;
-	#endif // _DEBUG
 	string* name_data;
 	name_data = new string[nx];  // 名前を格納
 
-	#ifdef _DEBUG
-	cout << "データ構造構築開始" << endl;
-	#endif // _DEBUG
 	string line;
 	int count = 0;
 	while (fp >> line)
@@ -177,42 +171,20 @@ int main(int argc, char* argv[])
 	}
 	fp.close();
 
-	#ifdef _DEBUG
-	cout << "データ構造構築開始" << endl;
-	cout << "ソート開始" << endl;
-	#endif // _DEBUG
-
-		// 名前をアルファベット順にソート
+	// 名前をアルファベット順にソート
 	quick_sort(name_data, 0, nx-1);
 
-	#ifdef _DEBUG
-	cout << "ソート終了" << endl;
-	cout << "全表示開始" << endl;
-	#endif // _DEBUG
-
 	// 全表示
-	/*for (int ky = 0; ky < nx; ky++)
-	{
-		string tel = hash_data->search(hash_data, name_data[ky]);
-		cout << name_data[ky] << " -> " << tel << "\n";
-	}*/
-
 	for (int ky = 0; ky < 5; ky++)
 	{
 		string tel = hash_data->search(hash_data, name_data[ky]);
 		cout << name_data[ky] << " -> " << tel << "\n";
 	}
-
 	for (int ky = 0; ky < 5; ky++)
 	{
 		int index = nx - 1 - ky;
 		string tel = hash_data->search(hash_data, name_data[index]);
 		cout << name_data[index] << " -> " << tel << "\n";
 	}
-
-	#ifdef _DEBUG
-	cout << "全表示終了" << endl;
-	#endif // _DEBUG
-
 	return 0;
 }
