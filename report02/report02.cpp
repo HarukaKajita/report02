@@ -65,9 +65,9 @@ void quick_sort(string a[], int left, int right)
 		}
 	} while (index1 < index2);
 
-	if (left < index2) {
+	/*if (left < index2) {
 		exchange_pVal(&a[left], &a[index2]);
-	}
+	}*/
 
 	if (left < index2) {
 		quick_sort(a, left, index2);
@@ -106,7 +106,7 @@ struct customHash
 		return 1;
 	}
 
-	int add(customHash* h, string key, string value) {
+	void add(customHash* h, string key, string value) {
 		int hash_value = hashfunction(key, h->size);
 		node* temp;
 		temp = new node;
@@ -175,16 +175,22 @@ int main(int argc, char* argv[])
 	quick_sort(name_data, 0, nx-1);
 
 	// 全表示
-	for (int ky = 0; ky < 5; ky++)
+	for (int ky = 0; ky < nx; ky++)
+	{
+		string tel = hash_data->search(hash_data, name_data[ky]);
+		cout << name_data[ky] << " -> " << tel << "\n";
+	}
+	// 5件表示
+	/*for (int ky = 0; ky < 5; ky++)
 	{
 		string tel = hash_data->search(hash_data, name_data[ky]);
 		cout << name_data[ky] << " -> " << tel << "\n";
 	}
 	for (int ky = 0; ky < 5; ky++)
 	{
-		int index = nx - 1 - ky;
+		int index = nx - 5 + ky;
 		string tel = hash_data->search(hash_data, name_data[index]);
 		cout << name_data[index] << " -> " << tel << "\n";
-	}
+	}*/
 	return 0;
 }
