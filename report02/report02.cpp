@@ -47,15 +47,8 @@ void quick_sort(string a[], int left, int right)
 
 	do
 	{
-		while (a[index1] < x)
-		{
-			index1++;
-		}
-
-		while (a[index2] > x)
-		{
-			index2--;
-		}
+		while (a[index1] < x) index1++;
+		while (a[index2] > x) index2--;
 
 		if (index1 <= index2)
 		{
@@ -65,9 +58,9 @@ void quick_sort(string a[], int left, int right)
 		}
 	} while (index1 < index2);
 
-	/*if (left < index2) {
+	if (left < index2) {
 		exchange_pVal(&a[left], &a[index2]);
-	}*/
+	}
 
 	if (left < index2) {
 		quick_sort(a, left, index2);
